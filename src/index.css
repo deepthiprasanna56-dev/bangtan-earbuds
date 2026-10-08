@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #8b5cf6;
+  --color-primary-light: #c084fc;
+  --color-primary-dark: #6d28d9;
+  --color-accent: #d8b4fe;
+  --color-chrome: #e2e8f0;
+  --color-chrome-dark: #94a3b8;
+  --color-dark: #07070b;
+  --color-dark-card: #0f0f18;
+  --color-dark-surface: #161626;
+  --color-dark-border: rgba(139, 92, 246, 0.2);
+  --color-gold: #f59e0b;
+
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #07070b;
+    color: #e2e8f0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    selection-background-color: #8b5cf6;
+    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.4);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #07070b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #4c1d95;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+  }
+}
+
+/* Keep page sections full-width while retaining their responsive inner gutters. */
+.container {
+  width: 100%;
+  max-width: 100% !important;
+  margin-inline: 0 !important;
+  padding-inline: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  overflow-x: clip;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Glass effect utilities */
+.glass {
+  background: rgba(15, 15, 24, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.18);
+}
+
+.glass-strong {
+  background: rgba(11, 11, 18, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 40%, #a855f7 70%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-chrome {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cinematic lighting overlay */
+.cinematic-vignette {
+  background: radial-gradient(circle at 50% 40%, transparent 20%, rgba(7, 7, 11, 0.45) 60%, rgba(7, 7, 11, 0.95) 100%);
+}
+
+.radial-glow {
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.22) 0%, rgba(109, 40, 217, 0.08) 50%, transparent 75%);
+}
+
+/* Floating animation */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1.5deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.7), 0 0 80px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Shine button animation */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.75s ease;
+}
+.btn-shine:hover::after {
+  transform: translateX(100%);
+}
+
+/* 3D Perspective container */
+.perspective-1000 {
+  perspective: 1000px;
+}
